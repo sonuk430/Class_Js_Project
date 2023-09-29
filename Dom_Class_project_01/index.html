@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div id="box">
+      <p id="content">Hello, I'm a div!</p>
+    </div>
+
+    <script>
+
+      let box = document.getElementById("box");
+      console.log(box);
+      box.style.height = "200px";
+      box.style.width = "300px";
+      box.style.backgroundColor = "yellow";
+
+      let content = document.getElementById("content");
+      console.log(content);
+      content.style.fontSize = "18px";
+      content.style.margin = "20px";
+      content.style.padding = "10px";
+      content.style.fontWeight = "bold";
+      content.style.color = "blue";
+    </script>
+  </body>
 </html>
