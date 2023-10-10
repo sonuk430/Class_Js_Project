@@ -5,8 +5,9 @@ let Triangle = false;
 let cShap = document.getElementById("shap_change");
 let cColor = document.getElementById("color_change");
 
-cShap.addEventListener("click",changeShap);
+
 cColor.addEventListener("click",changeColor);
+cShap.addEventListener("click",changeShap);
 
 function changeColor(){
     console.log(index);
@@ -16,6 +17,8 @@ function changeColor(){
     document.getElementById("circle").style.backgroundColor = color[index];
     index++;
 }
+
+
 
 function changeShap(){
     if(!Triangle){
