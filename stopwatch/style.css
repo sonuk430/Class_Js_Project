@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.timerDisplay{
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 10px 8px 10px 5px #222;
+    padding: 20px 24px;
+    border-radius: 10px;
+    font-size: 3.2rem ;
+    font-weight: 500;
+    transition: 1s ease-in-out;
+}
+.timerDisplay:hover{
+  transform: rotate(-5deg);
+    box-shadow: 0 0 12px #0ebac5;
+    transition: 0.5s ease-in;
+}
+.buttons{
+    margin-top: 35px;
+}
+
+.btn{
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: rgb(238, 59, 0);
+    background-color: black;
+    padding: 8px 16px;
+    border-radius: 10px; 
+}
+
+.btn:hover{
+    color: #0ebac5;
+    box-shadow: 0 0 12px #0ebac5;
+}
+
+
