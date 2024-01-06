@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #414141;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    height: 300px;
+    width: 50%;
+    border-radius: 15px;
+    background-color: aquamarine;
+}
+
+#birthDayInput{
+height: 2rem;
+width: 70%;
+font-size: larger;
+}
+
+#btn{
+    height: 2rem;
+    width: 5rem;
+    font-size: large;
+    background-color: #414141;
+}
