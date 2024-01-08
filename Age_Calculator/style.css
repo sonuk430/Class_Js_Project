@@ -32,8 +32,12 @@ font-size: larger;
 }
 
 #btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 2rem;
-    width: 5rem;
+    padding: 10px;
+    /* width: 5rem; */
     font-size: large;
     background-color: #414141;
 }
