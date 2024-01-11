@@ -36,15 +36,12 @@ colorBtnEl.addEventListener("click", () => {
   }
 });
 
-shapeBtnEl.addEventListener("click",()=>{
-
-    shap = shapArr[shapIndex];
-    circleEL.classList.add("shap");
-    shapIndex++;
-    console.log(shap);
-    if(shapIndex == shapArr.length){
-        shapIndex = 0;
-    }
-
-
-})
+shapeBtnEl.addEventListener("click", () => {
+  let shap = shapArr[shapIndex];
+  circleEL.classList.add(`${shap}`);
+  shapIndex++;
+  console.log(shap);
+  if (shapIndex == shapArr.length) {
+    shapIndex = 0;
+  }
+});
