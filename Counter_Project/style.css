@@ -20,7 +20,7 @@ body {
   gap: 50px;
 }
 
-.box1 {
+.count {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,6 @@ body {
   padding: 20px;
   box-shadow: rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   font-size: 40px;
-
 }
 
 .box2 {
@@ -36,13 +35,22 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 100px;
+  min-height: 250px;
   width: 15rem;
   box-shadow: rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
 .box2 input {
-  width: 20%;
+  height: 30px;
+  font-size: 1.5rem;
+  width: 30%;
+}
+
+.box2 .heading {
+  /* border: solid; */
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-bottom: solid 1px aqua;
 }
 
 .btnBox {
@@ -52,15 +60,23 @@ body {
   justify-content: space-around;
 }
 
-.btnBox button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 50px;
-    border-radius: 10px;
-    border: none;
-    font-size:40px;
-    background-color: aqua;
+.btnBox button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 50px;
+  border-radius: 10px;
+  border: none;
+  font-size: 40px;
+  background-color: rgb(44, 40, 40);
+}
 
+.reset {
+  height: 50px;
+  width: 150px;
+  border-radius: 100px;
+  border: solid 1px;
+  font-size: 2rem;
+  background-color: rgb(44, 40, 40);
 }

@@ -1,21 +1,30 @@
-let box1El = document.querySelector(".box1");
+let countEl = document.querySelector(".count");
 
-let inctementByEl = document.querySelector("#inctementBy");
+let incrementByEl = document.querySelector("#incrementBy");
 
 let plusEl = document.querySelector("#plus");
 
 let minusEl = document.querySelector("#minus");
 
-let val = 0;
+let resetEl = document.querySelector(".reset");
 
 plusEl.addEventListener("click", () => {
-  val++;
-  console.log(val);
-  box1El.innerText = `${val}`;
+  let countVal = parseInt(countEl.innerText);
+
+  let incrementByVal = parseInt(incrementByEl.value);
+
+  countEl.innerText = countVal + incrementByVal;
 });
 
 minusEl.addEventListener("click", () => {
-  val--;
-  box1El.innerText = `${val}`;
-  console.log(val);
+  let countVal = parseInt(countEl.innerText);
+
+  let incrementByVal = parseInt(incrementByEl.value);
+
+  countEl.innerText = countVal - incrementByVal;
+});
+
+resetEl.addEventListener("click", () => {
+  countEl.innerText = 0;
+  incrementByEl.value = 1;
 });
