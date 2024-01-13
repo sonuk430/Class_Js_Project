@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Test 3</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="leftSideBox">
+        <div class="heading">
+          <h1>Products</h1>
+          <button id="addNewProductBtn">Add</button>
+        </div>
+
+        <div id="product">
+          <ul class="productList">
+            <li>
+              <div id="productName">Product-1</div>
+              <div id="productAmount">100</div>
+              <div id="productQty">
+                <span class="decrement">-</span>
+                <span>2</span>
+                <span class="increment">+</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- user intut given -->
+        <div class="userSlip">
+          <input
+            id="pName"
+            type="text"
+            placeholder="Enter Product Name"
+          />
+
+          <input id="pAmount" type="number" placeholder="Enter Product Amount" />
+
+          <input id="pQty" type="number" placeholder="Enter Product qty." />
+          <button id="userSlipSubmitBtn">Submit</button>
+        </div>
+      </div>
+      <div class="rightSideBox">
+        <div class="heading"><h1>Card</h1></div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

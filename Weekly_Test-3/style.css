@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+ul li {
+  list-style: none;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 100vh;
+  width: 100%;
+  background-color: #414141;
+}
+
+.leftSideBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 3px;
+  width: 300px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #525050;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+}
+#addNewProductBtn {
+  height: 30px;
+  width: 100px;
+  border: solid 1px;
+}
+#product {
+  width: 100%;
+  height: 100%;
+}
+.productList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.productList li {
+  background-color: aliceblue;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#productQty {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: aqua;
+  border-radius: 15px;
+  width: 90px;
+  height: 30px;
+}
+
+.rightSideBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 3px;
+  height: 100%;
+  width: 300px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.userSlip {
+  position: absolute;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: solid 1px orange;
+  height: 100px;
+  width: 100%;
+  background-color: blueviolet;
+  display: none;
+}
