@@ -3,6 +3,7 @@ const addNewProductBtn = document.querySelector("#addNewProductBtn");
 const userSlipSubmitBtn = document.querySelector("#userSlipSubmitBtn");
 
 const productList = document.querySelector(".productList");
+
 const userSlip = document.querySelector(".userSlip");
 
 const pName = document.querySelector("#pName");
@@ -11,17 +12,13 @@ const pAmount = document.querySelector("#pAmount");
 
 const pQty = document.querySelector("#pQty");
 
-addNewProductBtn.addEventListener("click", () => {
-  userSlip.style.display = "block";
-});
+let decrement = document.querySelector(".decrement");
 
-userSlipSubmitBtn.addEventListener("click", () => {
-  if (pName.value === "" || pAmount.value === "" || pQty.value === "") {
-    alert("plese fill all input");
-    return;
-  }
-  creatElements();
-});
+let qunatity = document.querySelector(".qunatity");
+
+let increment = document.querySelector(".increment");
+
+let val = parseInt(qunatity.innerText);
 
 function creatElements() {
   let name = pName.value;
@@ -29,7 +26,7 @@ function creatElements() {
   let qty = pQty.value;
 
   let list = document.createElement("li");
-
+  list.className = "listItems";
   let div1 = document.createElement("div");
 
   div1.id = "productName";
@@ -65,3 +62,29 @@ function creatElements() {
   div3.appendChild(span3);
   productList.appendChild(list);
 }
+
+addNewProductBtn.addEventListener("click", () => {
+  userSlip.style.display = "block";
+});
+
+userSlipSubmitBtn.addEventListener("click", () => {
+  if (pName.value === "" || pAmount.value === "" || pQty.value === "") {
+    alert("plese fill all input");
+    return;
+  }
+  creatElements();
+});
+
+productList.addEventListener("click", (e) => {
+  const listItems = document.querySelectorAll(".listItems");
+  if (e.target.className === "increment") {
+    val++;
+    qunatity.innerText = val;
+  } else if (e.target.className === "decrement") {
+    val--;
+    qunatity.innerText = val;
+    if (val === -1) {
+      productList.remove();
+    }
+  }
+});
