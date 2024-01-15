@@ -28,24 +28,38 @@ ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 3px;
+  border: solid 1px;
   width: 300px;
   height: 300px;
   overflow-y: scroll;
 }
-.leftSideBox::-webkit-scrollbar{
+.leftSideBox::-webkit-scrollbar {
   width: 0;
 }
 
 .heading {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #525050;
   width: 100%;
   height: 30px;
   text-align: center;
 }
+.headingButtom {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+.headingButtom > p {
+  padding: 5px;
+  font-size: 0.9rem;
+  background-color: #ffffff;
+}
+
 #addNewProductBtn {
   height: 30px;
   width: 100px;
@@ -60,10 +74,10 @@ ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
   gap: 5px;
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .productList li {
   background-color: aliceblue;
@@ -77,25 +91,46 @@ ul li {
 #productQty {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: aqua;
   border-radius: 15px;
   width: 90px;
   height: 30px;
+}
+.decrement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: orangered;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.increment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: orangered;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
 
 .rightSideBox {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 3px;
+  border: solid 1px;
   height: 100%;
   width: 300px;
   height: 300px;
   overflow-y: scroll;
 }
 
-.rightSideBox::-webkit-scrollbar{
+.rightSideBox::-webkit-scrollbar {
   width: 0;
 }
 
