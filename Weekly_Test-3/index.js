@@ -18,8 +18,6 @@ let qunatity = document.querySelector(".qunatity");
 
 let increment = document.querySelector(".increment");
 
-let val = parseInt(qunatity.innerText);
-
 function creatElements() {
   let name = pName.value;
   let amount = pAmount.value;
@@ -62,9 +60,16 @@ function creatElements() {
   div3.appendChild(span3);
   productList.appendChild(list);
 }
+let addNewProductBtnEl = true;
 
 addNewProductBtn.addEventListener("click", () => {
-  userSlip.style.display = "block";
+  if (addNewProductBtnEl === true) {
+    userSlip.style.display = "flex";
+    addNewProductBtnEl = false;
+  } else {
+    userSlip.style.display = "none";
+    addNewProductBtnEl = true;
+  }
 });
 
 userSlipSubmitBtn.addEventListener("click", () => {
@@ -76,15 +81,21 @@ userSlipSubmitBtn.addEventListener("click", () => {
 });
 
 productList.addEventListener("click", (e) => {
-  const listItems = document.querySelectorAll(".listItems");
+  // const listItems = document.querySelector(".listItems");
+
   if (e.target.className === "increment") {
-    val++;
-    qunatity.innerText = val;
+    let newVariablePlus = parseInt(e.target.previousElementSibling.innerText);
+
+    newVariablePlus++;
+    e.target.previousElementSibling.innerText = newVariablePlus;
   } else if (e.target.className === "decrement") {
-    val--;
-    qunatity.innerText = val;
-    if (val === -1) {
-      productList.remove();
+    let newVariablemins = parseInt(e.target.nextElementSibling.innerText);
+    newVariablemins--;
+
+    if (newVariablemins === -1) {
+      e.target.parentNode.parentNode.remove();
+    } else {
+      e.target.nextElementSibling.innerText = newVariablemins;
     }
   }
 });
