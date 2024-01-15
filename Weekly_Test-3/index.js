@@ -18,48 +18,56 @@ let qunatity = document.querySelector(".qunatity");
 
 let increment = document.querySelector(".increment");
 
-function creatElements() {
-  let name = pName.value;
-  let amount = pAmount.value;
-  let qty = pQty.value;
+const RightSideProductList = document.querySelector(".RightSideProductList");
 
-  let list = document.createElement("li");
-  list.className = "listItems";
-  let div1 = document.createElement("div");
+// let rightSideLi = document.querySelectorAll(".listItems")
 
-  div1.id = "productName";
-  div1.innerText = `${name}`;
+let rightSideLi = document.querySelectorAll(".listItemsDetails");
 
-  let div2 = document.createElement("div");
-
-  div2.id = "productAmount";
-  div2.innerText = `${amount}`;
-  let div3 = document.createElement("div");
-
-  div3.id = "productQty";
-
-  let span1 = document.createElement("span");
-
-  span1.innerText = `${"-"}`;
-
-  span1.className = "decrement";
-  let span2 = document.createElement("span");
-
-  span2.innerText = `${qty}`;
-
-  let span3 = document.createElement("span");
-
-  span3.innerText = `${"+"}`;
-
-  span3.className = "increment";
-  list.appendChild(div1);
-  list.appendChild(div2);
-  list.appendChild(div3);
-  div3.appendChild(span1);
-  div3.appendChild(span2);
-  div3.appendChild(span3);
-  productList.appendChild(list);
+function updatePlus(idx, value, amount) {
+  rightSideLi = document.querySelectorAll(".listItemsDetails");
+  // console.log(RightSideProductList);
+  // console.log(idx, value, amount);
+  // console.log(rightSideLi);
+  rightSideLi.forEach((el) => {
+    if (el.value == idx) {
+      rightSideLi[idx].children[1].innerText = value * amount;
+    }
+  });
 }
+updatePlus();
+
+function creatElement1(name, price, qty, val) {
+  let li = document.createElement("li");
+  li.innerHTML = `<div id="productName">${name}</div>
+  <div id="productAmount">${price}</div>
+  <div id="productQty">
+    <span class="decrement">${"-"}</span>
+    <span class="qunatity">${qty}</span>
+    <span class="increment">${"+"}</span>
+  </div>`;
+  li.classList.add("listItems");
+  li.setAttribute("value", val); // index findout krne ke liye add kiya he.
+  productList.appendChild(li);
+}
+
+creatElement1("product-1", "100", "2", 0);
+creatElement1("product-2", "200", "3", 1);
+
+// let i = 0;
+
+function creatElement2(pName, pAmount, qty, val) {
+  let li = document.createElement("li");
+  li.innerHTML = `<div>${pName}</div>
+  <div>${pAmount * qty}</div>`;
+  li.classList.add("listItemsDetails");
+  li.setAttribute("value", val);
+  RightSideProductList.appendChild(li);
+}
+
+creatElement2("product-1", "100", "2", 0);
+creatElement2("product-2", "200", "3", 1);
+
 let addNewProductBtnEl = true;
 
 addNewProductBtn.addEventListener("click", () => {
@@ -72,22 +80,31 @@ addNewProductBtn.addEventListener("click", () => {
   }
 });
 
+let j = 2;
+
 userSlipSubmitBtn.addEventListener("click", () => {
   if (pName.value === "" || pAmount.value === "" || pQty.value === "") {
     alert("plese fill all input");
     return;
   }
-  creatElements();
+  // creatElements();
+
+  creatElement1(pName.value, pAmount.value, pQty.value, j);
+  creatElement2(pName.value, pAmount.value, pQty.value, j++);
 });
 
-productList.addEventListener("click", (e) => {
-  // const listItems = document.querySelector(".listItems");
-
+productList.addEventListener("click", (e, idx) => {
   if (e.target.className === "increment") {
     let newVariablePlus = parseInt(e.target.previousElementSibling.innerText);
-
+    let idx = e.target.parentElement.parentElement.value;
     newVariablePlus++;
     e.target.previousElementSibling.innerText = newVariablePlus;
+    updatePlus(
+      idx,
+      newVariablePlus,
+      e.target.parentElement.parentElement.children[1].innerText
+    );
+    // rightSideDataAdd();
   } else if (e.target.className === "decrement") {
     let newVariablemins = parseInt(e.target.nextElementSibling.innerText);
     newVariablemins--;
