@@ -10,22 +10,22 @@
     <div class="wrapper">
       <div class="left_side">
         <div class="left_side_content">
-          <textarea id="textarea" placeholder="// Write a note here"></textarea>
+          <textarea id="textarea" autofocus="true" placeholder="// Write a note here"></textarea>
 
           <div class="color">
-            <input type="color" />
+            <input type="color" id="colorcode" value="#0e2377" />
           </div>
         </div>
         <div class="btnDiv">
-          <button>Add Note</button>
+          <button id="btn">Add Note</button>
         </div>
       </div>
       <div class="right_side">
-        <div>
+        <div class="heading">
           <h1>Your Notes</h1>
         </div>
-        <div>
-          <p>You have not added a note yet.</p>
+        <div class="container">
+          <!-- <p>You have not added a note yet.</p> -->
         </div>
       </div>
     </div>
