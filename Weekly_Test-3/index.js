@@ -20,11 +20,12 @@ let increment = document.querySelector(".increment");
 
 const RightSideProductList = document.querySelector(".RightSideProductList");
 
-// let rightSideLi = document.querySelectorAll(".listItems")
+let lefttSideLi = document.querySelectorAll(".listItems");
 
 let rightSideLi = document.querySelectorAll(".listItemsDetails");
 
 function updatePlus(idx, value, amount) {
+  console.log(idx, value, amount);
   rightSideLi = document.querySelectorAll(".listItemsDetails");
   // console.log(RightSideProductList);
   // console.log(idx, value, amount);
@@ -35,7 +36,20 @@ function updatePlus(idx, value, amount) {
     }
   });
 }
-updatePlus();
+// updatePlus();
+
+function updateMinus(idx, value, amount) {
+  console.log(idx, value, amount);
+  rightSideLi = document.querySelectorAll(".listItemsDetails");
+
+  rightSideLi.forEach((el) => {
+    if (el.value == idx) {
+      rightSideLi[idx].children[1].innerText = value * amount;
+    }
+  });
+}
+
+// left side elements li created;
 
 function creatElement1(name, price, qty, val) {
   let li = document.createElement("li");
@@ -54,8 +68,7 @@ function creatElement1(name, price, qty, val) {
 creatElement1("product-1", "100", "2", 0);
 creatElement1("product-2", "200", "3", 1);
 
-// let i = 0;
-
+// right side element li created;
 function creatElement2(pName, pAmount, qty, val) {
   let li = document.createElement("li");
   li.innerHTML = `<div>${pName}</div>
@@ -87,7 +100,6 @@ userSlipSubmitBtn.addEventListener("click", () => {
     alert("plese fill all input");
     return;
   }
-  // creatElements();
 
   creatElement1(pName.value, pAmount.value, pQty.value, j);
   creatElement2(pName.value, pAmount.value, pQty.value, j++);
@@ -97,17 +109,25 @@ productList.addEventListener("click", (e, idx) => {
   if (e.target.className === "increment") {
     let newVariablePlus = parseInt(e.target.previousElementSibling.innerText);
     let idx = e.target.parentElement.parentElement.value;
+    // console.log(idx);
     newVariablePlus++;
+
     e.target.previousElementSibling.innerText = newVariablePlus;
     updatePlus(
       idx,
       newVariablePlus,
       e.target.parentElement.parentElement.children[1].innerText
     );
-    // rightSideDataAdd();
   } else if (e.target.className === "decrement") {
     let newVariablemins = parseInt(e.target.nextElementSibling.innerText);
+    let idx = e.target.parentElement.parentElement.value;
     newVariablemins--;
+
+    updateMinus(
+      idx,
+      newVariablemins,
+      e.target.parentElement.parentElement.children[1].innerText
+    );
 
     if (newVariablemins === -1) {
       e.target.parentNode.parentNode.remove();
