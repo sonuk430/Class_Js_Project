@@ -25,21 +25,36 @@ let lefttSideLi = document.querySelectorAll(".listItems");
 let rightSideLi = document.querySelectorAll(".listItemsDetails");
 
 function updatePlus(idx, value, amount) {
-  console.log(idx, value, amount);
-  rightSideLi = document.querySelectorAll(".listItemsDetails");
-  // console.log(RightSideProductList);
   // console.log(idx, value, amount);
-  // console.log(rightSideLi);
+  rightSideLi = document.querySelectorAll(".listItemsDetails");
+
   rightSideLi.forEach((el) => {
     if (el.value == idx) {
       rightSideLi[idx].children[1].innerText = value * amount;
     }
   });
 }
+
+function totalPrice(amount) {
+  let totalAmount = document.querySelector(".totalAmount");
+  rightSideLi = document.querySelectorAll(".listItemsDetails");
+
+  let totalPriceValue = 0;
+
+  rightSideLi.forEach((el) => {
+    let listPrice = parseInt(el.children[1].innerText);
+
+    totalPriceValue += listPrice;
+    console.log(listPrice);
+  });
+  totalAmount.innerText = totalPriceValue;
+}
+
+totalPrice();
 // updatePlus();
 
 function updateMinus(idx, value, amount) {
-  console.log(idx, value, amount);
+  // console.log(idx, value, amount);
   rightSideLi = document.querySelectorAll(".listItemsDetails");
 
   rightSideLi.forEach((el) => {
@@ -118,6 +133,7 @@ productList.addEventListener("click", (e, idx) => {
       newVariablePlus,
       e.target.parentElement.parentElement.children[1].innerText
     );
+    totalPrice(e.target.parentElement.parentElement.children[1].innerText);
   } else if (e.target.className === "decrement") {
     let newVariablemins = parseInt(e.target.nextElementSibling.innerText);
     let idx = e.target.parentElement.parentElement.value;
@@ -128,6 +144,7 @@ productList.addEventListener("click", (e, idx) => {
       newVariablemins,
       e.target.parentElement.parentElement.children[1].innerText
     );
+    totalPrice(e.target.parentElement.parentElement.children[1].innerText);
 
     if (newVariablemins === -1) {
       e.target.parentNode.parentNode.remove();
