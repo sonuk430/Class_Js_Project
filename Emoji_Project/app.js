@@ -19,8 +19,9 @@ function display() {
 
     newRow.innerHTML = `<tr>
     <td>${el.emoji}</td>
-    <td>${el.description}</td>
     <td>${el.aliases}</td>
+    <td>${el.description}</td>
+   
   </tr>`;
 
     search_result_container.appendChild(newRow);
