@@ -24,22 +24,35 @@ let lefttSideLi = document.querySelectorAll(".listItems");
 
 let rightSideLi = document.querySelectorAll(".listItemsDetails");
 
+let totalAmount = document.querySelector(".total");
+
 function updatePlus(idx, value, amount) {
   // console.log(idx, value, amount);
   rightSideLi = document.querySelectorAll(".listItemsDetails");
 
   rightSideLi.forEach((el) => {
-    if (el.value == idx) {
-      rightSideLi[idx].children[1].innerText = value * amount;
+    if (el.getAttribute("value") == idx) {
+      el.children[1].innerText = value * amount;
     }
   });
 }
 
 function totalPrice(amount) {
-  let totalAmount = document.querySelector(".totalAmount");
   rightSideLi = document.querySelectorAll(".listItemsDetails");
 
-  let totalPriceValue = 0;
+  const totalAmount = document.querySelector(".total"); // Correct class name
+
+// ... (rest of your code)
+
+// Initial total value
+const initialTotal = parseInt(totalAmount.innerText);
+
+totalPrice(initialTotal); // Call totalPrice function with initial total
+
+function totalPrice(initialAmount) {
+  rightSideLi = document.querySelectorAll(".listItemsDetails");
+
+  let totalPriceValue = initialAmount; // Initialize total with the initial amount
 
   rightSideLi.forEach((el) => {
     let listPrice = parseInt(el.children[1].innerText);
@@ -50,6 +63,34 @@ function totalPrice(amount) {
   totalAmount.innerText = totalPriceValue;
 }
 
+// ... (rest of your code)
+
+
+  // let totalPriceValue = 0;
+
+  // // if (rightSideLi.length === 0) {
+  // //   totalPriceValue = 0;
+  // // } else {
+  // rightSideLi.forEach((el) => {
+  //   let listPrice = parseInt(el.children[1].innerText);
+  //   console.log(listPrice);
+  //   function totalPriceValue() {
+  //     totalPriceValue += listPrice;
+  //     if (totalPriceValue <= 0) {
+  //       totalPriceValue = 0;
+  //     } else {
+  //       totalPriceValue = totalPriceValue;
+  //     }
+  //     return totalPriceValue;
+  //   }
+
+  //   var abc = totalPriceValue();
+  // });
+  // // }
+
+  // totalAmount.innerText = abc;
+}
+
 totalPrice();
 // updatePlus();
 
@@ -58,8 +99,8 @@ function updateMinus(idx, value, amount) {
   rightSideLi = document.querySelectorAll(".listItemsDetails");
 
   rightSideLi.forEach((el) => {
-    if (el.value == idx) {
-      rightSideLi[idx].children[1].innerText = value * amount;
+    if (el.getAttribute("value") == idx) {
+      el.children[1].innerText = value * amount;
     }
   });
 }
@@ -91,6 +132,8 @@ function creatElement2(pName, pAmount, qty, val) {
   li.classList.add("listItemsDetails");
   li.setAttribute("value", val);
   RightSideProductList.appendChild(li);
+  let totalVal = pAmount * qty;
+  totalAmount.innerHTML = parseInt(totalAmount.innerText) + totalVal;
 }
 
 creatElement2("product-1", "100", "2", 0);
@@ -144,10 +187,21 @@ productList.addEventListener("click", (e, idx) => {
       newVariablemins,
       e.target.parentElement.parentElement.children[1].innerText
     );
+    console.log(
+      idx,
+      newVariablemins,
+      e.target.parentElement.parentElement.children[1].innerText
+    );
     totalPrice(e.target.parentElement.parentElement.children[1].innerText);
 
     if (newVariablemins === -1) {
       e.target.parentNode.parentNode.remove();
+      let listItemsDetails = document.querySelectorAll(".listItemsDetails");
+      listItemsDetails.forEach((el) => {
+        if (el.value === e.target.parentNode.parentNode.value) {
+          el.remove();
+        }
+      });
     } else {
       e.target.nextElementSibling.innerText = newVariablemins;
     }
