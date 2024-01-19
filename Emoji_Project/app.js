@@ -1,31 +1,61 @@
-window.onload = () => display;
 
-let search_field = document.querySelector("#search_field");
+function searchEmoji(){
+  let inputValue = document.getElementById("search_field").value;
 
-search_field.addEventListener("keyup", (e) => {
-  let serachValue = search_field.value;
+  displayResult(inputValue);
 
-  console.log(e);
-});
-
-function display() {
-  let search_result_container = document.querySelector(
-    "#search_result_container"
-  );
-  //   console.log(search_result_container);
-
-  emojiList.forEach((el) => {
-    let newRow = document.createElement("tr");
-
-    newRow.innerHTML = `<tr>
-    <td>${el.emoji}</td>
-    <td>${el.aliases}</td>
-    <td>${el.description}</td>
-   
-  </tr>`;
-
-    search_result_container.appendChild(newRow);
-  });
 }
 
-display();
+
+
+function displayResult(searchQuery= ""){
+
+
+  let filteredData = emojiList.filter((e)=>{
+      if(e.description.indexOf(searchQuery) != -1){
+          return true;
+      }
+
+      if(e.tags.some(elem=>elem.startsWith(searchQuery))){
+          return true;
+      }
+
+      if(e.aliases.some(elem=>elem.startsWith(searchQuery))){
+          return true;
+      }
+  })
+
+  console.log(filteredData);
+
+
+  let parent = document.getElementById("search_result_container");
+
+  parent.innerHTML = "";
+
+  filteredData.forEach((e)=>{
+
+
+      let new_row = document.createElement("tr");
+      let new_emoji = document.createElement("td");
+      let new_aliases = document.createElement("td");
+      let new_desc = document.createElement("td");
+
+
+
+      new_emoji.innerText = e.emoji;
+      new_aliases.innerText = e.aliases;
+      new_desc.innerText = e.description;
+
+      new_row.appendChild(new_emoji);
+      new_row.appendChild(new_aliases);
+      new_row.appendChild(new_desc);
+
+      parent.appendChild(new_row);
+  })
+}
+
+
+document.getElementById("search_field").addEventListener("keyup", searchEmoji)
+
+
+window.onload = () => displayResult();
