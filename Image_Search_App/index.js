@@ -3,7 +3,7 @@ const searchForm = document.querySelector("form");
 const imagesContainer = document.querySelector(".images-container");
 const searchInput = document.querySelector(".search-input");
 const loadMoreBtn = document.querySelector(".loadMoreBtn");
-
+const searchBtn = document.querySelector("#searchBtn");
 
 let page = 1;
 // function to fetch using unsplash ApI
@@ -85,3 +85,19 @@ searchForm.addEventListener("submit", (e) => {
 loadMoreBtn.addEventListener("click", () => {
   fetchImages(searchInput.value.trim(), ++page);
 });
+
+searchBtn.addEventListener("click",()=>{
+    
+    const inputText = searchInput.value.trim();
+
+    if (inputText !== "") {
+      page = 1;
+      fetchImages(inputText, page);
+    } else {
+      imagesContainer.innerHTML = `<h2>Please enter a search query.</h2>`;
+  
+      if (loadMoreBtn.style.display === "block")
+        loadMoreBtn.style.display = "none";
+    }
+    fetchImages();
+})
