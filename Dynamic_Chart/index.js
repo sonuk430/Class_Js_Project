@@ -1,6 +1,6 @@
 const ctx = document.getElementById("realTimeChart").getContext("2d");
 let chart;
-
+// 
 const initialData = {
   labels: [],
   datasets: [
