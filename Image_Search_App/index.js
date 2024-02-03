@@ -80,7 +80,7 @@ searchForm.addEventListener("submit", (e) => {
   }
 });
 
-// adding load more page
+// adding load more page.
 
 loadMoreBtn.addEventListener("click", () => {
   fetchImages(searchInput.value.trim(), ++page);
